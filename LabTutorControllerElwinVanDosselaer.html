@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>Elwin Van Dosselaer</title>
+        <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+        
+        <!-- Labo 3 code -->
+        
+        <script type="text/javascript" >
+            
+            var myApp = angular.module('nameApp',[]);
+            
+            myApp.controller('MyController', function($scope) {
+                $scope.studenten = [
+                    {name: 'Joppe Mertens'},
+                    {name: 'Sander Hellemans'},
+                    {name: 'Jana Wossmann'},
+                    {name: 'Tim Francois'},
+                    {name: 'Nathan Horemans'},
+                    {name: 'Simon van den Brande'},
+                    {name: 'Astrid Moestermans'},
+                    {name: 'Felix Hemdane'},
+                    {name: 'Ancient Methods'},
+                    {name: 'Arno Sys'},
+                    {name: 'Thilde Demey'},
+                    {name: 'Lawrence Vandeputte'},
+                    {name: 'Stan Saesen'},
+                    {name: 'Robert De Niro'},
+                    {name: 'Cara Delevingne'},
+                    {name: 'Nathan Aertgeerts'},
+                    {name: 'Bart De Wever'},
+                    {name: 'Jack Daniels'},
+                    {name: 'Dennis Bertels'},
+                    {name: 'Donald Trump'},
+                ];
+                
+              $scope.checkboxes = function(student)
+              {
+                  return (student.check1 && student.check2 && student.check3 && student.check4 && student.check5 && student.check6 && student.check7);
+              }
+              
+              $scope.addNew = function()
+              {
+                  newStudent = {name: $scope.myname}
+                  
+                  $scope.studenten.push(newStudent);
+              }
+              
+              
+                
+            });
+        
+        </script>
+        
+        
+        
+	</head>
+
+	<body ng-app="nameApp" ng-controller="MyController">
+		
+        <div id="kamer"><h1>Kamer #12345</h1></div>
+		<div class="join">
+            
+
+        Jouw naam <input ng-model="myname" type="text" name="naam">
+                  <input class ="knop" type="submit" value="Join" ng-click="addNew()">
+            
+        </div>
+
+        <div class="tabel">
+        
+  <table style="width:100%" cellpadding="4" class="tabel2">
+      
+  <tr class="head">
+    <th >Naam Student</th>
+    <th >1</th>
+    <th >2</th>
+    <th >3</th>
+    <th >4</th>
+    <th >5</th>
+    <th >6</th>
+    <th >7</th>
+  </tr>
+      
+  <tr class="highlight" ng-show="myname">
+    <td class="NoAlign">{{ myname }}</td>
+    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox"></td>
+    <td ><input type="checkbox"></td>
+  </tr>
+      
+      
+      
+
+      
+  <tr ng-repeat="student in studenten" ng-class="{'finish' : checkboxes(student)}">
+    <td class="NoAlign">{{student.name}}</td>
+    <td ><input type="checkbox" ng-model="student.check1"></td>
+    <td ><input type="checkbox" ng-model="student.check2"></td>
+    <td ><input type="checkbox" ng-model="student.check3"></td>
+    <td ><input type="checkbox" ng-model="student.check4"></td>
+    <td ><input type="checkbox" ng-model="student.check5"></td>
+    <td ><input type="checkbox" ng-model="student.check6"></td>
+    <td ><input type="checkbox" ng-model="student.check7"></td>
+  </tr>
+      
+      
+</table>
+        
+        </div>
+		
+	</body>
+</html>
+
+<style>
+
+    body {
+        margin: 0 auto;
+        width: 90%;
+        padding: 1%;
+        font-family: 'Slabo 27px', serif;
+    }
+    
+    .highlight {
+        background-color:orange;
+    }
+    
+    .head {
+        background-color: orangered;
+        font-weight: bold;
+        color: white;
+    }
+
+    tr:hover td {
+        background: green;
+        color: white;
+    }
+    
+    th, td {
+        border-bottom: 1px solid #ddd;
+        text-align: center;
+    }
+    
+    .join {
+        border: solid grey 1px;
+        padding: 4px;
+        text-align: right;
+        margin-bottom: 10px;
+    }
+    
+    .knop {
+        background-color: darkorange;
+        border: none;
+        color: white;
+        padding: 10px;
+        margin-left: 5px;
+    }
+    
+    .finish {
+        background-color: lawngreen;
+    }
+    
+    .NoAlign {
+        text-align: left;
+    }
+    
+    
+    
+</style>
